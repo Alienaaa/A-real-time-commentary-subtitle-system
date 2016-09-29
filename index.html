@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>弹幕发射器</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" value="IE=9">
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+		<script language="javascript">
+			var jq = jQuery.noConflict();
+			jq(document).ready(function() {
+				jq("#shadow").css("height", jq(document).height()).hide();
+				jq("#text").click(function() {
+					jq("#shadow").toggle();
+					if (jq("#shadow").is(":hidden"))
+						jq(this).html("关灯").removeClass("turnedOff");
+					else
+						jq(this).html("开灯").addClass("turnedOff");
+				});
+			});
+		</script>
+		
+		<script language="javascript">
+			jq(document).ready(function() {
+				jq("#right-text").click(function() {
+					
+				});
+			});
+		</script>
+		
+		
+		<script>
+			var $ = function(x) {
+				return document.getElementById(x);
+			}
+		</script>
+		<script src="js/libabplayer.js"></script>
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" type="text/css" href="index.css" media="all">
+
+	</head>
+	<body>
+		<div style="height: 599px; display: none;" id="shadow"></div>
+
+		<div id="headbar" class="g-hd">
+			<h1 class="m-logo">
+			<a href="#home">
+				vedioplayer
+			</a></h1>
+			<div class="m-nav" id="topbar">
+				<ul class="nav1 tbtag">
+					<li class="j-crt">
+						<a rel="nofollow" href="#">
+							首页
+						</a>
+
+					</li>
+					<li class="">
+						<a href="#">
+							节目
+						</a>
+					</li>
+
+					<li>
+						<a href="#" class="tbtag">
+							更多
+						</a>
+
+					</li>
+				</ul>
+
+				<div class="nav2" id="schtagbox">
+					<div class="ssch tbtag">
+
+						<a href="#" class="btn xtag"></a>
+
+						<input value="" placeholder="搜索节目" class="xtag" onfocus="this.isfocus = true;" type="text">
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div id="stage-wrapper">
+			<div id="stage">
+				<div id="dmcanvas"></div>
+			</div>
+			<div id="stage-player">
+				<video src="hahaha.mp4" width="828"  controls="controls"></video>
+			</div>
+			<div id="player-controls">
+				<div style="border:0;padding:3px 0 0 10px;">
+					<button id="dmplay">
+						播放
+					</button>
+					<button id="dmstop">
+						停止
+					</button>
+					<button>
+						归位
+					</button>
+					<span id="playtime">0:00</span>
+
+					<input type="text" id="textIn" style="width:300px;"/>
+					<select id="dmMovementMode">
+						<option value="1" selected>滚动</option>
+						<option value="5">顶部</option>
+						<option value="4">底部</option>
+						<option value="6">逆向</option>
+						<option value="7">定位</option>
+					</select>
+					<select id="dmSize">
+						<option value="35">特大</option>
+						<option value="30">大</option>
+						<option value="25" selected>中</option>
+						<option value="16">小</option>
+						<option value="10">很小</option>
+					</select>
+					<button id="btnSend">
+						发送
+					</button>
+
+					<input type="checkbox" id="dmDbg">
+					生存时间
+					<input type="checkbox" id="dmBorder" checked>
+					边际
+				</div>
+			</div>
+		</div>
+
+		<!--侧栏漂浮开始-->
+		<div id="squ-side">
+			<div id="text" >
+				关灯</br>
+			</div>
+		</div>
+		<!--侧栏漂浮结束-->
+		
+		<!--右侧栏漂浮开始-->
+		<div id="right-side">
+			<div id="right-text" >
+				允许桌面提醒
+			</div>
+		</div>
+		<!--右侧栏漂浮结束-->
+		<!--左侧栏fixed开始-->
+		<div id="left-fixed">				
+			<h1 id="left-text" >
+			<a>
+				正在播出
+			</a></h1>
+			<div  id="list-wrap">
+				<ul class="list">
+					<li class="list1">
+						<a  href="#">
+							节目1
+						</a>
+
+					</li>
+					<li class="list2">
+						<a href="#">
+							节目2
+						</a>
+					</li>
+
+					<li class="list3">
+						<a href="#" >
+							节目3
+						</a>
+
+					</li>
+				</ul>
+
+			</div>
+		</div>
+		<!--左侧栏fixed结束-->
+		<!--右侧栏fixed开始-->
+		<div id="right-fixed">
+			
+				<h1 id=left-text >
+					<a>评论列表</a>
+				</h1>
+				
+			
+		</div>
+		<!--右侧栏fixed结束-->
+		<script>
+			
+			var cm = new CommentManager($('dmcanvas'));
+			cm.load([]);
+			cm.init();
+			var globalTimer = 0;
+			
+		</script>
+		<script src="js/guiload.js"></script>
+	</body>
+</html>
